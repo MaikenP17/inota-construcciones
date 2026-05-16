@@ -1,0 +1,359 @@
+/* Torre Inota — Game Styles v2 */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --game-dark:   #0d0c0a;
+  --game-bone:   #f0ede7;
+  --game-copper: #9a6f3a;
+  --game-gold:   #c8a060;
+  --game-muted:  rgba(240,237,231,0.45);
+  --game-muted-dim: rgba(240,237,231,0.25);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Jost', Arial, sans-serif;
+}
+
+html, body {
+  width: 100%; height: 100%; overflow: hidden;
+  background: var(--game-dark);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ── CANVAS ── */
+#game-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── SHARED SCREEN STYLES ── */
+.screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.screen.hidden { display: none; }
+
+/* ── SCREEN START ── */
+.screen--start { background: #0d0c0a; }
+
+.ui-logo {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: var(--game-copper);
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.2s ease forwards;
+}
+
+.screen--start h1 {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 14vw, 10rem);
+  font-weight: 300;
+  line-height: 0.88;
+  color: var(--game-bone);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2em;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.4s ease forwards;
+}
+
+.screen--start h1 em {
+  font-style: italic;
+  color: var(--game-copper);
+}
+
+.ui-sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--game-muted);
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.6s ease forwards;
+}
+
+/* ── BUTTONS ── */
+.btn-game {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 0.85rem 2.8rem;
+  border: 1px solid rgba(154,111,58,0.5);
+  background: transparent;
+  color: var(--game-copper);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.15s;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.8s ease forwards;
+}
+
+.btn-game:hover {
+  background: rgba(154,111,58,0.12);
+  border-color: var(--game-copper);
+  color: var(--game-bone);
+  transform: scale(1.03);
+}
+
+.btn-game:active { transform: scale(0.98); }
+
+.ui-back {
+  display: inline-block;
+  margin-top: 1.4rem;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--game-muted-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+  opacity: 0;
+  animation: fadeUp 0.6s 1.0s ease forwards;
+}
+
+.ui-back:hover { color: var(--game-muted); }
+
+/* ── HUD ── */
+.hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.6rem 2.5rem;
+  pointer-events: none;
+}
+
+.hud.hidden { display: none; }
+
+.hud__score, .hud__best {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.hud__label {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(240,237,231,0.30);
+}
+
+.hud__score span:last-child,
+.hud__best span:last-child {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--game-bone);
+  display: inline-block;
+}
+
+.hud__best { text-align: right; }
+
+/* Score bounce on point */
+@keyframes scoreBounce {
+  0%   { transform: scale(1.0);  color: var(--game-bone); }
+  38%  { transform: scale(1.32); color: var(--game-gold); }
+  70%  { transform: scale(0.96); }
+  100% { transform: scale(1.0);  color: var(--game-bone); }
+}
+.hud__score span:last-child.bouncing {
+  animation: scoreBounce 0.40s ease-out forwards;
+}
+
+/* ── COMBO BADGE ── */
+.hud__combo {
+  position: fixed;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.88);
+  font-family: var(--font-body);
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--game-gold);
+  background: rgba(200,160,96,0.10);
+  border: 1px solid rgba(200,160,96,0.30);
+  padding: 0.6rem 1.8rem;
+  border-radius: 100px;
+  opacity: 0;
+  transition: opacity 0.18s, transform 0.18s;
+  pointer-events: none;
+}
+
+.hud__combo.is-visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Pulse ring expanding from combo badge */
+.hud__combo.is-visible::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 100px;
+  border: 1px solid rgba(200,160,96,0.45);
+  animation: comboRing 0.55s ease-out forwards;
+}
+
+@keyframes comboRing {
+  from { opacity: 0.9; transform: scale(1); }
+  to   { opacity: 0;   transform: scale(1.35); }
+}
+
+.hud__combo.hidden { display: none; }
+
+/* ── PERFECT FLASH OVERLAY ── */
+.perfect-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  background: radial-gradient(ellipse at center, rgba(200,160,96,0.13) 0%, transparent 65%);
+  pointer-events: none;
+  opacity: 0;
+  animation: perfectFlashAnim 0.65s ease-out forwards;
+}
+
+@keyframes perfectFlashAnim {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ── SCREEN OVER ── */
+.screen--over {
+  background: rgba(10,9,8,0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.over-label {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(240,237,231,0.45);
+  margin-bottom: 1.6rem;
+  opacity: 0;
+  animation: fadeUp 0.5s 0.1s ease forwards;
+}
+
+.over-score-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.25s ease forwards;
+}
+
+.over-score-num {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 18vw, 10rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--game-bone);
+}
+
+.over-score-unit {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--game-muted);
+  margin-bottom: 0.5rem;
+}
+
+.over-reason {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240,237,231,0.28);
+  margin-bottom: 1.8rem;
+  opacity: 0;
+  animation: fadeUp 0.5s 0.38s ease forwards;
+  min-height: 1em;
+}
+
+.over-best {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--game-copper);
+  margin-bottom: 2.2rem;
+  opacity: 0;
+  animation: fadeUp 0.5s 0.48s ease forwards;
+}
+
+.over-best.hidden { visibility: hidden; }
+
+.screen--over .btn-game {
+  opacity: 0;
+  animation: fadeUp 0.5s 0.56s ease forwards;
+}
+
+.screen--over .ui-back {
+  opacity: 0;
+  animation: fadeUp 0.5s 0.68s ease forwards;
+}
+
+/* ── ATMOSPHERE LABEL ── */
+.atm-label {
+  position: fixed;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(240,237,231,0.22);
+  pointer-events: none;
+  z-index: 20;
+  transition: opacity 0.8s ease;
+  white-space: nowrap;
+}
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scoreFlash {
+  0%   { color: var(--game-gold); transform: scale(1.15); }
+  100% { color: var(--game-bone); transform: scale(1); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 480px) {
+  .hud { padding: 1.1rem 1.3rem; }
+  .screen { padding: 1.5rem; }
+  .hud__score span:last-child,
+  .hud__best span:last-child { font-size: 1.8rem; }
+}

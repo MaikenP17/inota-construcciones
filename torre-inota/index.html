@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Torre Inota — Inota Construcciones</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230d0c0a'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' font-family='Georgia,serif' fill='%239a6f3a'>I</text></svg>">
+</head>
+<body>
+
+  <!-- CANVAS (behind everything) -->
+  <canvas id="game-canvas" aria-hidden="true"></canvas>
+
+  <!-- PANTALLA INICIO -->
+  <div id="screen-start" class="screen screen--start">
+    <div class="ui-logo">Inota Construcciones</div>
+    <h1>Torre<br><em>Inota</em></h1>
+    <p class="ui-sub">Construye el edificio más alto posible</p>
+    <button id="btn-start" class="btn-game">Comenzar</button>
+    <a href="/" class="ui-back">← Volver al sitio</a>
+  </div>
+
+  <!-- HUD (durante juego) -->
+  <div id="hud" class="hud hidden" aria-live="polite">
+    <div class="hud__score">
+      <span class="hud__label">Pisos</span>
+      <span id="score-display">0</span>
+    </div>
+    <div class="hud__best">
+      <span class="hud__label">Récord</span>
+      <span id="best-display">0</span>
+    </div>
+  </div>
+  <div id="combo-display" class="hud__combo hidden" aria-live="assertive">
+    PERFECTO ×<span id="combo-num">2</span>
+  </div>
+
+  <!-- PANTALLA GAME OVER -->
+  <div id="screen-over" class="screen screen--over hidden">
+    <p class="over-label" id="over-label">Partida terminada</p>
+    <div class="over-score-wrap">
+      <span class="over-score-num" id="final-score">0</span>
+      <span class="over-score-unit">pisos</span>
+    </div>
+    <p id="over-reason" class="over-reason"></p>
+    <p id="over-best-msg" class="over-best hidden">Nuevo récord</p>
+    <button id="btn-retry" class="btn-game">Construir de nuevo</button>
+    <a href="/" class="ui-back">← Volver al sitio</a>
+  </div>
+
+  <div id="atm-label" class="atm-label"></div>
+
+  <script src="game.js"></script>
+</body>
+</html>

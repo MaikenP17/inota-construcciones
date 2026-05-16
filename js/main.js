@@ -365,4 +365,55 @@
     });
   });
 
+
+  /* ──────────────────────────────────────────────────────────
+     9. EASTER EGG — Torre Inota
+     5 clics en el logo dentro de 3.5s → overlay cinematográfico
+     → redirige a /torre-inota/
+  ────────────────────────────────────────────────────────── */
+  var eggLogo  = document.querySelector('.logo');
+  var eggCount = 0;
+  var eggTimer = null;
+
+  if (eggLogo) {
+    eggLogo.addEventListener('click', function (e) {
+      eggCount++;
+      clearTimeout(eggTimer);
+      eggTimer = setTimeout(function () { eggCount = 0; }, 3500);
+
+      eggLogo.classList.remove('egg-pulse');
+      void eggLogo.offsetWidth;
+      eggLogo.classList.add('egg-pulse');
+
+      if (eggCount >= 5) {
+        e.preventDefault();
+        eggCount = 0;
+        clearTimeout(eggTimer);
+        launchTorreInota();
+      }
+    });
+  }
+
+  function launchTorreInota() {
+    var overlay = document.createElement('div');
+    overlay.className = 'torre-egg-overlay';
+    overlay.innerHTML =
+      '<div class="torre-egg-inner">' +
+        '<span class="torre-egg-label">acceso secreto</span>' +
+        '<p class="torre-egg-title">TORRE<br>INOTA</p>' +
+        '<span class="torre-egg-sub">construye el cielo</span>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        overlay.classList.add('is-active');
+      });
+    });
+
+    setTimeout(function () {
+      window.location.href = '/torre-inota/';
+    }, 2200);
+  }
+
 })();
