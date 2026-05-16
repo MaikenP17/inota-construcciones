@@ -87,6 +87,26 @@
       link.addEventListener('click', closeMenu);
     });
 
+    // Botón de cierre interno
+    var mobileCloseBtn = mobileMenu.querySelector('.mobile-close');
+    if (mobileCloseBtn) {
+      mobileCloseBtn.addEventListener('click', function () {
+        closeMenu();
+        hamburger.focus();
+      });
+    }
+
+    // Cerrar al tocar fuera del menú
+    document.addEventListener('click', function (e) {
+      if (
+        mobileMenu.classList.contains('is-open') &&
+        !e.target.closest('#mobile-menu') &&
+        !e.target.closest('.hamburger')
+      ) {
+        closeMenu();
+      }
+    });
+
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
         closeMenu();
@@ -415,5 +435,62 @@
       window.location.href = '/torre-inota/';
     }, 2200);
   }
+
+  /* ──────────────────────────────────────────────────────────
+     10. DROPDOWN SERVICIOS
+     Hover (desktop) manejado por CSS.
+     Click/tap: toggle .is-open — permite abrir en móvil y
+     en escritorio sin hover.
+     Click fuera: cierra todos.
+  ────────────────────────────────────────────────────────── */
+  var dropdownItems = document.querySelectorAll('.nav__item--dropdown');
+
+  dropdownItems.forEach(function (item) {
+    var trigger = item.querySelector('.nav__dropdown-trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', function (e) {
+      var isOpen = item.classList.contains('is-open');
+
+      // Cierra todos primero
+      dropdownItems.forEach(function (d) {
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav__dropdown-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        item.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+        // En móvil, donde el hover no existe, evitamos navegar al hacer tap
+        // para que el menú se abra. En desktop el hover ya lo muestra.
+        if (window.innerWidth < 1024) {
+          e.preventDefault();
+        }
+      }
+    });
+  });
+
+  // Cerrar al hacer click fuera
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav__item--dropdown')) {
+      dropdownItems.forEach(function (d) {
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav__dropdown-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      dropdownItems.forEach(function (d) {
+        d.classList.remove('is-open');
+        var t = d.querySelector('.nav__dropdown-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
 
 })();

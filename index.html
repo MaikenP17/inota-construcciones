@@ -28,7 +28,20 @@
       <a href="#intro" class="logo" aria-label="Inota Construcciones — inicio">INOTA</a>
 
       <ul class="nav__links" role="list">
-        <li><a href="#servicios">Servicios</a></li>
+        <li class="nav__item--dropdown">
+          <a href="#servicios" class="nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+            Servicios
+            <svg class="nav__dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+          </a>
+          <ul class="nav__dropdown" role="menu" aria-label="Servicios">
+            <li><a href="/servicios/construccion/" class="nav__dropdown-item nav__dropdown-item--highlight" role="menuitem">Construcción</a></li>
+            <li><a href="#servicios" class="nav__dropdown-item" role="menuitem">Remodelación</a></li>
+            <li><a href="#servicios" class="nav__dropdown-item" role="menuitem">Diseño</a></li>
+            <li><a href="#servicios" class="nav__dropdown-item" role="menuitem">Drywall y acabados</a></li>
+            <li><a href="#servicios" class="nav__dropdown-item" role="menuitem">Proyectos comerciales</a></li>
+            <li><a href="#servicios" class="nav__dropdown-item" role="menuitem">Vivienda familiar</a></li>
+          </ul>
+        </li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#proceso">Proceso</a></li>
@@ -44,12 +57,24 @@
 
     <!-- Mobile menu -->
     <div id="mobile-menu" class="mobile-menu" role="dialog" aria-label="Menú de navegación" aria-hidden="true">
+      <button class="mobile-close" aria-label="Cerrar menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
       <ul role="list">
-        <li><a href="#servicios">Servicios</a></li>
+        <li class="mobile-menu__group">
+          <span class="mobile-menu__group-label">Servicios</span>
+          <ul class="mobile-menu__sub">
+            <li><a href="/servicios/construccion/">Construcción</a></li>
+            <li><a href="#servicios">Remodelación</a></li>
+            <li><a href="#servicios">Diseño</a></li>
+            <li><a href="#servicios">Drywall y acabados</a></li>
+            <li><a href="#servicios">Proyectos comerciales</a></li>
+            <li><a href="#servicios">Vivienda familiar</a></li>
+          </ul>
+        </li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#proceso">Proceso</a></li>
-        <li><a href="#diferenciales">Diferencial</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </div>
@@ -127,11 +152,14 @@
 
         <div class="services__grid">
 
-          <article class="service-item reveal-up" data-num="01">
-            <div class="service-item__inner">
-              <h3 class="service-item__title">Construcción</h3>
-              <p class="service-item__desc">Edificamos desde los cimientos con rigor técnico y materiales certificados que garantizan durabilidad y valor a largo plazo.</p>
-            </div>
+          <article class="service-item service-item--link reveal-up" data-num="01">
+            <a href="/servicios/construccion/" class="service-item__link-wrap" aria-label="Ver servicio: Construcción">
+              <div class="service-item__inner">
+                <h3 class="service-item__title">Construcción</h3>
+                <p class="service-item__desc">Edificamos desde los cimientos con rigor técnico y materiales certificados que garantizan durabilidad y valor a largo plazo.</p>
+                <span class="service-item__cta">Ver más →</span>
+              </div>
+            </a>
           </article>
 
           <article class="service-item reveal-up" data-num="02" style="--reveal-delay: 100ms">

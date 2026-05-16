@@ -593,32 +593,90 @@ p { line-height: 1.75; }
 .mobile-menu {
   position: fixed;
   inset: 0;
-  background: var(--color-dark);
+  background: rgba(12, 10, 8, 0.88);
+  backdrop-filter: blur(36px) saturate(160%) brightness(0.90);
+  -webkit-backdrop-filter: blur(36px) saturate(160%) brightness(0.90);
   z-index: 999;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   transform: translateX(100%);
   transition: transform var(--dur-slow) var(--ease-out-expo);
   pointer-events: none;
+  padding: var(--space-xl) var(--container-pad);
+  overflow-y: auto;
 }
 .mobile-menu.is-open { transform: translateX(0); pointer-events: auto; }
+
+/* Close button — top-right corner */
+.mobile-close {
+  position: absolute;
+  top: calc(var(--header-h) / 2 - 18px);
+  right: var(--container-pad);
+  width: 44px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.13);
+  color: var(--color-bone);
+  cursor: pointer;
+  transition: background 0.2s var(--ease-smooth), transform 0.2s var(--ease-smooth);
+  z-index: 10;
+}
+.mobile-close svg { width: 16px; height: 16px; display: block; }
+.mobile-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.06);
+}
 
 .mobile-menu ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-md);
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 320px;
 }
-.mobile-menu ul a {
+
+/* Links principales — cápsulas glass */
+.mobile-menu > ul > li > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
   font-family: var(--font-display);
-  font-size: clamp(var(--text-2xl), 6vw, var(--text-3xl));
+  font-size: clamp(1.4rem, 5vw, 2rem);
   font-weight: 300;
   color: var(--color-bone-muted);
   letter-spacing: 0.03em;
-  transition: color var(--dur-fast);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.10);
+  transition:
+    background 0.22s var(--ease-smooth),
+    color 0.22s var(--ease-smooth),
+    box-shadow 0.22s var(--ease-smooth),
+    transform 0.18s var(--ease-smooth);
+  text-align: center;
 }
-.mobile-menu ul a:hover { color: var(--color-bone); }
+.mobile-menu > ul > li > a:hover,
+.mobile-menu > ul > li > a:active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-bone);
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.16);
+}
 
 /* ─── 10. VIDEO SCROLL INTRO ────────────────────────────────── */
 
@@ -1484,4 +1542,255 @@ p { line-height: 1.75; }
 @keyframes revealFadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── 22. SERVICIOS DROPDOWN ────────────────────────────────── */
+.nav__item--dropdown {
+  position: relative;
+}
+
+.nav__dropdown-trigger {
+  gap: 0.45rem;
+  cursor: pointer;
+}
+
+.nav__dropdown-chevron {
+  width: 8px;
+  height: 5px;
+  flex-shrink: 0;
+  transition: transform 0.22s var(--ease-smooth);
+  margin-top: 1px;
+}
+
+.nav__item--dropdown.is-open .nav__dropdown-chevron,
+.nav__item--dropdown:hover .nav__dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+/*
+  DROPDOWN — cápsulas individuales tipo liquid glass
+  top: 100% (sin gap) + padding-top crea el espacio visual
+  manteniendo el área de hover continua (sin zona muerta)
+*/
+.nav__dropdown {
+  position: absolute;
+  top: 100%;          /* pegado al trigger — sin dead-zone */
+  right: 0;
+  padding-top: 10px;  /* espacio visual via padding, hover siempre conectado */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+  background: none;
+  border: none;
+  box-shadow: none;
+  opacity: 0;
+  transform: translateY(-6px) scale(0.97);
+  pointer-events: none;
+  transition:
+    opacity 0.20s var(--ease-smooth),
+    transform 0.20s var(--ease-smooth);
+  z-index: 100;
+}
+
+.nav__item--dropdown:hover .nav__dropdown,
+.nav__item--dropdown.is-open .nav__dropdown {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Stagger sutil en cada píldora al aparecer */
+.nav__item--dropdown:hover .nav__dropdown li,
+.nav__item--dropdown.is-open .nav__dropdown li {
+  animation: ddItemIn 0.26s var(--ease-out-expo) both;
+}
+.nav__dropdown li:nth-child(1) { animation-delay: 0ms; }
+.nav__dropdown li:nth-child(2) { animation-delay: 30ms; }
+.nav__dropdown li:nth-child(3) { animation-delay: 58ms; }
+.nav__dropdown li:nth-child(4) { animation-delay: 84ms; }
+.nav__dropdown li:nth-child(5) { animation-delay: 108ms; }
+.nav__dropdown li:nth-child(6) { animation-delay: 130ms; }
+
+@keyframes ddItemIn {
+  from { opacity: 0; transform: translateY(-5px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* Cada item = cápsula glass independiente (como los nav__links) */
+.nav__dropdown-item {
+  display: block;
+  padding: 0.44rem 1.15rem;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  /* Glass */
+  backdrop-filter: blur(22px) saturate(180%) brightness(1.02);
+  -webkit-backdrop-filter: blur(22px) saturate(180%) brightness(1.02);
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 4px 18px rgba(0, 0, 0, 0.07),
+    0 8px 32px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  color: var(--color-text-muted);
+  transition:
+    background 0.20s var(--ease-smooth),
+    color 0.20s var(--ease-smooth),
+    box-shadow 0.20s var(--ease-smooth),
+    transform 0.16s var(--ease-smooth);
+}
+
+/* Reflejo especular en cada píldora */
+.nav__dropdown-item::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 15%; right: 15%;
+  height: 45%;
+  border-radius: 100px 100px 60% 60%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.18), transparent);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.nav__dropdown li {
+  position: relative;
+}
+
+.nav__dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: var(--color-text);
+  transform: scale(1.03);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 6px 24px rgba(0, 0, 0, 0.10),
+    0 12px 40px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+/* Construcción — tinte cobre */
+.nav__dropdown-item--highlight {
+  background: rgba(154, 111, 58, 0.10);
+  border-color: rgba(154, 111, 58, 0.30);
+  color: var(--color-copper);
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 4px 18px rgba(154, 111, 58, 0.09),
+    inset 0 1px 0 rgba(255, 200, 130, 0.20);
+}
+.nav__dropdown-item--highlight:hover {
+  background: rgba(154, 111, 58, 0.16);
+  color: var(--color-copper);
+  transform: scale(1.03);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 6px 24px rgba(154, 111, 58, 0.14),
+    inset 0 1px 0 rgba(255, 200, 130, 0.30);
+}
+
+/* Over dark sections — misma lógica que los nav__links */
+#site-header.on-dark .nav__dropdown-item {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: var(--color-bone-muted);
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.08),
+    0 4px 18px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+#site-header.on-dark .nav__dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--color-bone);
+}
+
+/* ── MOBILE MENU — grupos de servicios (glass capsule style) ── */
+.mobile-menu__group {
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-menu__group-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin-bottom: 0.7rem;
+  padding-top: 0.3rem;
+}
+
+.mobile-menu__sub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding-bottom: 0.9rem;
+  margin-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(240, 237, 231, 0.07);
+}
+
+/* Sub-items — cápsulas más pequeñas */
+.mobile-menu__sub li {
+  width: 100%;
+  max-width: 260px;
+}
+
+.mobile-menu__sub a {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.65rem 1.6rem !important;
+  border-radius: 100px;
+  font-family: var(--font-display) !important;
+  font-size: clamp(1.1rem, 3.5vw, 1.5rem) !important;
+  font-weight: 300;
+  color: var(--color-bone-muted) !important;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.08);
+  transition: background 0.2s var(--ease-smooth), color 0.2s var(--ease-smooth), transform 0.15s !important;
+}
+.mobile-menu__sub a:hover,
+.mobile-menu__sub a:active {
+  background: rgba(255, 255, 255, 0.09) !important;
+  color: var(--color-bone) !important;
+  transform: scale(1.02) !important;
+}
+
+/* Service items link style */
+.service-item--link { cursor: pointer; }
+.service-item--link:hover { background: var(--color-white); }
+
+.service-item__link-wrap {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.service-item__cta {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s var(--ease-out-expo), transform 0.25s var(--ease-out-expo);
+}
+.service-item--link:hover .service-item__cta {
+  opacity: 1;
+  transform: translateX(0);
 }
