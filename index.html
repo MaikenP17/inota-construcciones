@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Inota Construcciones — Empresa de construcción, remodelación y diseño arquitectónico en Cúcuta, Norte de Santander. Calidad estructural con acabados premium.">
+  <meta name="keywords" content="construcción, remodelación, diseño arquitectónico, Cúcuta, Norte de Santander, obra, acabados">
+  <meta name="author" content="Inota Construcciones">
+  <meta property="og:title" content="Inota Construcciones — Arquitectura & Construcción Premium">
+  <meta property="og:description" content="Construimos espacios que definen estilos de vida. Más de dos décadas edificando Norte de Santander.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200">
+  <title>Inota Construcciones — Arquitectura & Construcción Premium</title>
+  <!-- Favicon: "I" cobre sobre negro -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0908'/><text x='50' y='78' text-anchor='middle' font-size='72' fill='%23b5834a' font-family='Georgia,serif' font-weight='400'>I</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER / NAV
+  ============================================================ -->
+  <header id="site-header" role="banner">
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#intro" class="logo" aria-label="Inota Construcciones — inicio">INOTA</a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#contacto" class="nav__cta">Contacto</a></li>
+      </ul>
+
+      <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu" role="dialog" aria-label="Menú de navegación" aria-hidden="true">
+      <ul role="list">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#diferenciales">Diferencial</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         01 — INTRO (video scroll scrub — reemplaza al hero)
+    ============================================================ -->
+    <section id="intro" class="video-scroll" aria-labelledby="intro-heading">
+
+      <div class="video-sticky">
+
+        <!-- Canvas: renderiza frames controlados por scroll -->
+        <!-- REEMPLAZAR frames: ver instrucciones en js/main.js -->
+        <canvas id="scroll-canvas" class="video-scroll__canvas" aria-hidden="true"></canvas>
+
+        <!-- Overlay oscuro gradiente -->
+        <div class="video-overlay" aria-hidden="true"></div>
+
+        <!-- Textos por fase -->
+        <div class="video-texts" aria-live="polite">
+
+          <div class="video-text" data-phase="0" aria-hidden="true">
+            <span class="video-text__label">Cúcuta · Norte de Santander</span>
+            <h1 id="intro-heading" class="video-text__heading">
+              Construimos<br>espacios con<br><em>propósito.</em>
+            </h1>
+          </div>
+
+          <div class="video-text" data-phase="1" aria-hidden="true">
+            <span class="video-text__label">Servicios</span>
+            <h2 class="video-text__heading">
+              Diseño,<br>obra y<br>remodelación.
+            </h2>
+          </div>
+
+          <div class="video-text" data-phase="2" aria-hidden="true">
+            <span class="video-text__label">Filosofía</span>
+            <h2 class="video-text__heading">
+              Cada detalle<br><em>importa.</em>
+            </h2>
+          </div>
+
+          <div class="video-text video-text--final" data-phase="3" aria-hidden="true">
+            <p class="video-text__brand">INOTA</p>
+            <p class="video-text__sub">Construcciones</p>
+            <a href="#servicios" class="btn btn--outline">Descubrir nuestra obra</a>
+          </div>
+
+        </div>
+
+        <!-- Hint de scroll (desaparece al scrollear) -->
+        <div class="video-scroll-hint" aria-hidden="true">
+          <span class="video-scroll-hint__label">Scroll</span>
+          <div class="video-scroll-hint__line"></div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         02 — SERVICIOS
+    ============================================================ -->
+    <section id="servicios" aria-labelledby="servicios-heading">
+      <div class="section__container">
+        <div class="section__header reveal-fade">
+          <span class="section__label">01 — Servicios</span>
+          <h2 id="servicios-heading" class="section__title">
+            Cada espacio, <em>una obra.</em>
+          </h2>
+        </div>
+
+        <div class="services__grid">
+
+          <article class="service-item reveal-up" data-num="01">
+            <div class="service-item__inner">
+              <h3 class="service-item__title">Construcción</h3>
+              <p class="service-item__desc">Edificamos desde los cimientos con rigor técnico y materiales certificados que garantizan durabilidad y valor a largo plazo.</p>
+            </div>
+          </article>
+
+          <article class="service-item reveal-up" data-num="02" style="--reveal-delay: 100ms">
+            <div class="service-item__inner">
+              <h3 class="service-item__title">Remodelación</h3>
+              <p class="service-item__desc">Transformamos espacios existentes con intervenciones que respetan la estructura original y renuevan la experiencia de habitar.</p>
+            </div>
+          </article>
+
+          <article class="service-item reveal-up" data-num="03" style="--reveal-delay: 200ms">
+            <div class="service-item__inner">
+              <h3 class="service-item__title">Diseño Arquitectónico</h3>
+              <p class="service-item__desc">Concebimos cada proyecto como una solución espacial única, funcional y estéticamente coherente con el entorno y el cliente.</p>
+            </div>
+          </article>
+
+          <article class="service-item reveal-up" data-num="04" style="--reveal-delay: 100ms">
+            <div class="service-item__inner">
+              <h3 class="service-item__title">Dirección de Obra</h3>
+              <p class="service-item__desc">Coordinamos cada etapa constructiva con precisión milimétrica, asegurando plazos, presupuesto y calidad en cada detalle de la ejecución.</p>
+            </div>
+          </article>
+
+          <article class="service-item reveal-up" data-num="05" style="--reveal-delay: 200ms">
+            <div class="service-item__inner">
+              <h3 class="service-item__title">Acabados Premium</h3>
+              <p class="service-item__desc">Seleccionamos y aplicamos materiales de acabado de primera calidad que elevan cualquier espacio a un estándar de lujo permanente.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         03 — PROYECTOS
+    ============================================================ -->
+    <section id="proyectos" aria-labelledby="proyectos-heading">
+      <div class="section__container">
+        <div class="section__header reveal-fade">
+          <span class="section__label">02 — Proyectos</span>
+          <h2 id="proyectos-heading" class="section__title">
+            Obra <em>reciente.</em>
+          </h2>
+        </div>
+
+        <div class="projects__grid">
+
+          <!-- REEMPLAZAR imagen-1: casa moderna exterior con luz diurna -->
+          <article class="project-card project-card--wide reveal-up" aria-label="Residencia Palomino">
+            <div class="project-card__img" style="background-image: url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1400&auto=format&fit=crop&q=80')"></div>
+            <div class="project-card__overlay"></div>
+            <div class="project-card__info">
+              <span class="project-card__location">El Palomino, Cúcuta</span>
+              <h3 class="project-card__title">Residencia Palomino</h3>
+              <span class="project-card__year">2024</span>
+            </div>
+          </article>
+
+          <!-- REEMPLAZAR imagen-2: edificio de vidrio, fachada urbana -->
+          <article class="project-card project-card--tall reveal-up" style="--reveal-delay: 150ms" aria-label="Torre Ejecutiva Norte">
+            <div class="project-card__img" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80')"></div>
+            <div class="project-card__overlay"></div>
+            <div class="project-card__info">
+              <span class="project-card__location">Centro, Cúcuta</span>
+              <h3 class="project-card__title">Torre Ejecutiva Norte</h3>
+              <span class="project-card__year">2023</span>
+            </div>
+          </article>
+
+          <!-- REEMPLAZAR imagen-3: conjunto residencial, fachada principal -->
+          <article class="project-card project-card--medium reveal-up" style="--reveal-delay: 100ms" aria-label="Conjunto Montecarlo">
+            <div class="project-card__img" style="background-image: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=900&auto=format&fit=crop&q=80')"></div>
+            <div class="project-card__overlay"></div>
+            <div class="project-card__info">
+              <span class="project-card__location">Los Patios, N. de Santander</span>
+              <h3 class="project-card__title">Conjunto Montecarlo</h3>
+              <span class="project-card__year">2023</span>
+            </div>
+          </article>
+
+          <!-- REEMPLAZAR imagen-4: casa minimalista, diseño contemporáneo -->
+          <article class="project-card project-card--wide-alt reveal-up" style="--reveal-delay: 200ms" aria-label="Casa Estudio Vega">
+            <div class="project-card__img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&auto=format&fit=crop&q=80')"></div>
+            <div class="project-card__overlay"></div>
+            <div class="project-card__info">
+              <span class="project-card__location">Villa del Rosario, N. de Santander</span>
+              <h3 class="project-card__title">Casa Estudio Vega</h3>
+              <span class="project-card__year">2022</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         04 — SOBRE NOSOTROS
+    ============================================================ -->
+    <section id="nosotros" aria-labelledby="nosotros-heading">
+      <div class="section__container">
+        <div class="about__split">
+
+          <div class="about__statement reveal-fade">
+            <span class="section__label">03 — Nosotros</span>
+            <h2 id="nosotros-heading" class="about__title">
+              Más de dos<br>décadas<br><em>construyendo</em><br>Norte de<br>Santander.
+            </h2>
+          </div>
+
+          <div class="about__content reveal-fade" style="--reveal-delay: 250ms">
+            <p class="about__text">Inota Construcciones nació de una convicción simple: cada metro cuadrado merece ser tratado con rigor, historia y propósito. Fundada como empresa familiar en Cúcuta, nuestra trayectoria abarca desde viviendas unifamiliares hasta proyectos de escala institucional y comercial.</p>
+            <p class="about__text">Nuestra filosofía parte de escuchar antes de diseñar, de entender antes de construir. Creemos que la excelencia no es un accidente — es el resultado de procesos disciplinados, equipos comprometidos y una relación honesta con cada cliente que deposita su confianza en nosotros.</p>
+
+            <div class="about__stats">
+              <!-- REEMPLAZAR: ajustar con cifras reales de la empresa -->
+              <div class="about__stat">
+                <span class="about__stat-number">+200</span>
+                <span class="about__stat-label">Proyectos entregados</span>
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-number">20+</span>
+                <span class="about__stat-label">Años de experiencia</span>
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-number">94%</span>
+                <span class="about__stat-label">Obras a tiempo</span>
+              </div>
+            </div>
+
+            <a href="#contacto" class="btn btn--text">Hablemos de tu proyecto →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         05 — PROCESO
+    ============================================================ -->
+    <section id="proceso" aria-labelledby="proceso-heading">
+      <div class="section__container">
+        <div class="section__header reveal-fade">
+          <span class="section__label">04 — Proceso</span>
+          <h2 id="proceso-heading" class="section__title">
+            Cómo <em>trabajamos.</em>
+          </h2>
+        </div>
+
+        <ol class="process__timeline" aria-label="Etapas del proceso constructivo">
+
+          <li class="process__step reveal-up">
+            <div class="process__dot" aria-hidden="true"></div>
+            <div class="process__step-content">
+              <span class="process__num" aria-hidden="true">01</span>
+              <h3 class="process__title">Diagnóstico</h3>
+              <p class="process__desc">Visitamos el espacio, escuchamos la visión y evaluamos viabilidad técnica y presupuestal con total transparencia.</p>
+            </div>
+          </li>
+
+          <li class="process__step reveal-up" style="--reveal-delay: 120ms">
+            <div class="process__dot" aria-hidden="true"></div>
+            <div class="process__step-content">
+              <span class="process__num" aria-hidden="true">02</span>
+              <h3 class="process__title">Diseño</h3>
+              <p class="process__desc">Desarrollamos planos, renders y especificaciones técnicas que dan forma tangible y precisa a la idea inicial del cliente.</p>
+            </div>
+          </li>
+
+          <li class="process__step reveal-up" style="--reveal-delay: 240ms">
+            <div class="process__dot" aria-hidden="true"></div>
+            <div class="process__step-content">
+              <span class="process__num" aria-hidden="true">03</span>
+              <h3 class="process__title">Planificación</h3>
+              <p class="process__desc">Elaboramos cronograma detallado, plan de recursos y presupuesto definitivo antes de iniciar cualquier actividad de obra.</p>
+            </div>
+          </li>
+
+          <li class="process__step reveal-up" style="--reveal-delay: 360ms">
+            <div class="process__dot" aria-hidden="true"></div>
+            <div class="process__step-content">
+              <span class="process__num" aria-hidden="true">04</span>
+              <h3 class="process__title">Ejecución</h3>
+              <p class="process__desc">Construimos con equipos propios, supervisión constante y control de calidad riguroso en cada etapa del proceso constructivo.</p>
+            </div>
+          </li>
+
+          <li class="process__step reveal-up" style="--reveal-delay: 480ms">
+            <div class="process__dot" aria-hidden="true"></div>
+            <div class="process__step-content">
+              <span class="process__num" aria-hidden="true">05</span>
+              <h3 class="process__title">Entrega</h3>
+              <p class="process__desc">Hacemos entrega formal con memoria técnica, garantías documentadas y acompañamiento post-obra durante el primer año.</p>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         06 — DIFERENCIALES
+    ============================================================ -->
+    <section id="diferenciales" aria-labelledby="diferenciales-heading">
+      <div class="section__container">
+        <div class="section__header reveal-fade">
+          <span class="section__label">05 — Diferencial</span>
+          <h2 id="diferenciales-heading" class="section__title">
+            Por qué <em>Inota.</em>
+          </h2>
+        </div>
+
+        <div class="differentials__grid">
+
+          <div class="differential reveal-up">
+            <div class="differential__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h4 class="differential__title">Garantía estructural</h4>
+            <p class="differential__desc">Certificamos cada obra con respaldo técnico y seguimiento durante el primer año post-entrega.</p>
+          </div>
+
+          <div class="differential reveal-up" style="--reveal-delay: 100ms">
+            <div class="differential__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h4 class="differential__title">Equipo propio</h4>
+            <p class="differential__desc">No tercerizamos la ejecución. Nuestros maestros y técnicos trabajan bajo dirección directa.</p>
+          </div>
+
+          <div class="differential reveal-up" style="--reveal-delay: 200ms">
+            <div class="differential__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h4 class="differential__title">Transparencia total</h4>
+            <p class="differential__desc">Presupuesto detallado sin letras pequeñas. Reportes de avance semanales al cliente.</p>
+          </div>
+
+          <div class="differential reveal-up" style="--reveal-delay: 100ms">
+            <div class="differential__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <h4 class="differential__title">Materiales certificados</h4>
+            <p class="differential__desc">Solo trabajamos con proveedores verificados y materiales con ficha técnica comprobable.</p>
+          </div>
+
+          <div class="differential reveal-up" style="--reveal-delay: 200ms">
+            <div class="differential__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h4 class="differential__title">Cumplimiento de plazos</h4>
+            <p class="differential__desc">El 94% de nuestros proyectos se entregan en la fecha acordada o antes del plazo establecido.</p>
+          </div>
+
+          <div class="differential reveal-up" style="--reveal-delay: 300ms">
+            <div class="differential__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/>
+                <line x1="8" y1="12" x2="21" y2="12"/>
+                <line x1="8" y1="18" x2="21" y2="18"/>
+                <line x1="3" y1="6" x2="3.01" y2="6"/>
+                <line x1="3" y1="12" x2="3.01" y2="12"/>
+                <line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+            </div>
+            <h4 class="differential__title">Diseño integrado</h4>
+            <p class="differential__desc">Arquitectura y construcción en un solo equipo. Sin brechas entre lo que se diseña y lo que se construye.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         07 — CONTACTO
+    ============================================================ -->
+    <section id="contacto" aria-labelledby="contacto-heading">
+      <div class="section__container">
+        <div class="contact__split">
+
+          <div class="contact__cta reveal-fade">
+            <span class="section__label">06 — Contacto</span>
+            <h2 id="contacto-heading" class="contact__title">
+              Hagamos<br>realidad<br><em>tu proyecto.</em>
+            </h2>
+            <div class="contact__info">
+              <!-- REEMPLAZAR: datos reales de contacto -->
+              <p class="contact__info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.42C1.6 2.32 2.47 1.44 3.57 1.44h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9A16 16 0 0 0 15 16.09l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +57 300 000 0000
+              </p>
+              <p class="contact__info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                info@inotaconstrucciones.com
+              </p>
+              <p class="contact__info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Cúcuta, Norte de Santander, Colombia
+              </p>
+            </div>
+          </div>
+
+          <form class="contact__form reveal-fade" style="--reveal-delay: 200ms" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Carlos Rodríguez" autocomplete="name" required>
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+57 300 000 0000" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" autocomplete="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="servicio">Servicio de interés</label>
+              <select id="servicio" name="servicio">
+                <option value="">Seleccionar servicio...</option>
+                <option value="construccion">Construcción nueva</option>
+                <option value="remodelacion">Remodelación</option>
+                <option value="diseno">Diseño arquitectónico</option>
+                <option value="direccion">Dirección de obra</option>
+                <option value="acabados">Acabados premium</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mensaje">Cuéntanos sobre tu proyecto</label>
+              <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe brevemente tu proyecto, ubicación y presupuesto estimado..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--copper">
+              <span class="btn__text">Enviar consulta</span>
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="site-footer" role="contentinfo">
+    <div class="footer__container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <span class="logo footer__logo">INOTA</span>
+          <p class="footer__tagline">Construimos espacios que<br>definen estilos de vida.</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Navegación del pie de página">
+          <div class="footer__nav-col">
+            <span class="footer__nav-heading">Servicios</span>
+            <ul>
+              <li><a href="#servicios">Construcción</a></li>
+              <li><a href="#servicios">Remodelación</a></li>
+              <li><a href="#servicios">Diseño Arquitectónico</a></li>
+              <li><a href="#servicios">Dirección de Obra</a></li>
+              <li><a href="#servicios">Acabados Premium</a></li>
+            </ul>
+          </div>
+          <div class="footer__nav-col">
+            <span class="footer__nav-heading">Empresa</span>
+            <ul>
+              <li><a href="#nosotros">Nosotros</a></li>
+              <li><a href="#proyectos">Proyectos</a></li>
+              <li><a href="#proceso">Proceso</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer__nav-col">
+            <!-- REEMPLAZAR: datos reales de contacto -->
+            <span class="footer__nav-heading">Contacto</span>
+            <ul>
+              <li><a href="tel:+573000000000">+57 300 000 0000</a></li>
+              <li><a href="mailto:info@inotaconstrucciones.com">info@inotaconstrucciones.com</a></li>
+              <li>Cúcuta, Norte de Santander</li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer__bottom">
+        <!-- REEMPLAZAR: año y datos legales reales -->
+        <p class="footer__copy">&copy; 2024 Inota Construcciones. Todos los derechos reservados.</p>
+        <div class="footer__social" aria-label="Redes sociales">
+          <!-- REEMPLAZAR: links reales de redes sociales -->
+          <a href="#" aria-label="Instagram de Inota Construcciones">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook de Inota Construcciones">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="WhatsApp de Inota Construcciones">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

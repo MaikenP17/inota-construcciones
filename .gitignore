@@ -1,0 +1,13 @@
+# Video original — no necesario en producción (usamos los frames extraídos)
+Recursos/*.mp4
+Recursos/*.mov
+Recursos/*.avi
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+*.code-workspace
