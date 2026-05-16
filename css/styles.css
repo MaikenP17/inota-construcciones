@@ -1711,60 +1711,106 @@ p { line-height: 1.75; }
 /* ── MOBILE MENU — grupos de servicios (glass capsule style) ── */
 .mobile-menu__group {
   width: 100%;
+  max-width: 320px;
+}
+
+/* Botón Servicios — misma cápsula que los links principales */
+.mobile-menu__toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.85rem 2rem;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-weight: 300;
+  color: var(--color-bone-muted);
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.10);
+  cursor: pointer;
+  transition:
+    background 0.22s var(--ease-smooth),
+    color 0.22s var(--ease-smooth),
+    box-shadow 0.22s var(--ease-smooth),
+    transform 0.18s var(--ease-smooth);
   text-align: center;
 }
-
-.mobile-menu__group-label {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.58rem;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: var(--color-copper);
-  margin-bottom: 0.7rem;
-  padding-top: 0.3rem;
+.mobile-menu__toggle:hover,
+.mobile-menu__toggle:active {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-bone);
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.16);
+}
+.mobile-menu__group.is-open .mobile-menu__toggle {
+  background: rgba(255, 255, 255, 0.11);
+  color: var(--color-bone);
 }
 
+/* Chevron rota al abrir */
+.mobile-menu__chevron {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-smooth);
+}
+.mobile-menu__group.is-open .mobile-menu__chevron {
+  transform: rotate(180deg);
+}
+
+/* Sub-lista — colapsada por defecto, abre con max-height */
 .mobile-menu__sub {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
   width: 100%;
-  padding-bottom: 0.9rem;
-  margin-bottom: 0.3rem;
-  border-bottom: 1px solid rgba(240, 237, 231, 0.07);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.38s var(--ease-smooth), padding 0.28s var(--ease-smooth);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.mobile-menu__group.is-open .mobile-menu__sub {
+  max-height: 480px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 /* Sub-items — cápsulas más pequeñas */
 .mobile-menu__sub li {
   width: 100%;
-  max-width: 260px;
+  max-width: 280px;
 }
-
 .mobile-menu__sub a {
-  display: flex !important;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0.65rem 1.6rem !important;
+  padding: 0.65rem 1.6rem;
   border-radius: 100px;
-  font-family: var(--font-display) !important;
-  font-size: clamp(1.1rem, 3.5vw, 1.5rem) !important;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 3.5vw, 1.4rem);
   font-weight: 300;
-  color: var(--color-bone-muted) !important;
+  color: var(--color-bone-muted);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
-  background: rgba(255, 255, 255, 0.04) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 1px 8px rgba(0,0,0,0.10), inset 0 1px 0 rgba(255,255,255,0.08);
-  transition: background 0.2s var(--ease-smooth), color 0.2s var(--ease-smooth), transform 0.15s !important;
+  transition: background 0.2s var(--ease-smooth), color 0.2s var(--ease-smooth), transform 0.15s;
 }
 .mobile-menu__sub a:hover,
 .mobile-menu__sub a:active {
-  background: rgba(255, 255, 255, 0.09) !important;
-  color: var(--color-bone) !important;
-  transform: scale(1.02) !important;
+  background: rgba(255, 255, 255, 0.09);
+  color: var(--color-bone);
+  transform: scale(1.02);
 }
 
 /* Service items link style */

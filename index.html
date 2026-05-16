@@ -62,8 +62,11 @@
       </button>
       <ul role="list">
         <li class="mobile-menu__group">
-          <span class="mobile-menu__group-label">Servicios</span>
-          <ul class="mobile-menu__sub">
+          <button class="mobile-menu__toggle" aria-expanded="false" aria-controls="mobile-servicios-sub">
+            Servicios
+            <svg class="mobile-menu__chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <ul class="mobile-menu__sub" id="mobile-servicios-sub" aria-hidden="true">
             <li><a href="/servicios/construccion/">Construcción</a></li>
             <li><a href="#servicios">Remodelación</a></li>
             <li><a href="#servicios">Diseño</a></li>

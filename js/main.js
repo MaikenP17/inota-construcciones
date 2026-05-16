@@ -77,6 +77,14 @@
       hamburger.setAttribute('aria-expanded', 'false');
       mobileMenu.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      // Cierra grupos colapsables (ej. Servicios)
+      mobileMenu.querySelectorAll('.mobile-menu__group.is-open').forEach(function (g) {
+        g.classList.remove('is-open');
+        var t = g.querySelector('.mobile-menu__toggle');
+        var s = g.querySelector('.mobile-menu__sub');
+        if (t) t.setAttribute('aria-expanded', 'false');
+        if (s) s.setAttribute('aria-hidden', 'true');
+      });
     }
 
     hamburger.addEventListener('click', function () {
@@ -85,6 +93,20 @@
 
     mobileMenu.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', closeMenu);
+    });
+
+    // Toggle Servicios sub-menú móvil
+    var mobileGroups = mobileMenu.querySelectorAll('.mobile-menu__group');
+    mobileGroups.forEach(function (group) {
+      var toggle = group.querySelector('.mobile-menu__toggle');
+      var sub = group.querySelector('.mobile-menu__sub');
+      if (!toggle || !sub) return;
+      toggle.addEventListener('click', function () {
+        var isOpen = group.classList.contains('is-open');
+        group.classList.toggle('is-open', !isOpen);
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        sub.setAttribute('aria-hidden', String(isOpen));
+      });
     });
 
     // Botón de cierre interno
