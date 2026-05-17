@@ -842,7 +842,7 @@ p { line-height: 1.75; }
 
 .services__grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border: 1px solid var(--color-line-light);
   border-bottom: none;
 }
@@ -850,64 +850,75 @@ p { line-height: 1.75; }
 .service-item {
   position: relative;
   overflow: hidden;
-  padding: var(--space-lg) var(--space-md);
+  padding: clamp(2.6rem, 5vw, 4rem) clamp(2rem, 4vw, 3.5rem);
   border-right: 1px solid var(--color-line-light);
   border-bottom: 1px solid var(--color-line-light);
   background: var(--color-light);
-  transition: background var(--dur-base) var(--ease-smooth);
-  grid-column: span 4;
+  transition: background 0.35s var(--ease-smooth);
+  grid-column: span 1;
 }
-.service-item:nth-child(3) { border-right: none; }
-.service-item:nth-child(4) { grid-column: span 6; }
-.service-item:nth-child(5) { grid-column: span 6; border-right: none; }
+/* Columna derecha: sin borde derecho */
+.service-item:nth-child(2n) { border-right: none; }
+/* Reset de los spans específicos anteriores */
+.service-item:nth-child(3),
+.service-item:nth-child(4),
+.service-item:nth-child(5) { grid-column: span 1; border-right: 1px solid var(--color-line-light); }
+.service-item:nth-child(2n):is(:nth-child(3), :nth-child(4), :nth-child(5)) { border-right: none; }
 
-/* Número decorativo muy sutil */
+/* Número — marcador tipográfico editorial, visible y refinado */
 .service-item::before {
   content: attr(data-num);
   position: absolute;
-  top: -10px;
-  right: var(--space-md);
+  top: clamp(1.8rem, 3vw, 2.6rem);
+  right: clamp(1.8rem, 3vw, 3rem);
   font-family: var(--font-display);
-  font-size: 6rem;
-  font-weight: 600;
-  color: rgba(31, 29, 26, 0.04);
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  font-weight: 300;
+  color: rgba(181, 131, 74, 0.20);
   line-height: 1;
+  letter-spacing: -0.04em;
   pointer-events: none;
   user-select: none;
-  transition: color var(--dur-base);
+  transition: color 0.35s var(--ease-smooth);
 }
 
-/* Línea cobre que barre de izquierda a derecha en hover */
+/* Línea cobre vertical izquierda — cae de arriba a abajo en hover */
 .service-item::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0;
-  width: 100%; height: 1px;
+  top: 0; left: 0;
+  width: 2px; height: 0;
   background: var(--color-copper);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur-base) var(--ease-out-expo);
+  transition: height 0.5s var(--ease-out-expo);
 }
 
 .service-item:hover { background: var(--color-white); }
-.service-item:hover::after { transform: scaleX(1); }
-.service-item:hover::before { color: rgba(31, 29, 26, 0.07); }
+.service-item:hover::after { height: 100%; }
+.service-item:hover::before { color: rgba(181, 131, 74, 0.50); }
 
-.service-item__inner { position: relative; z-index: 1; }
+.service-item__inner {
+  position: relative;
+  z-index: 1;
+}
 
 .service-item__title {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
+  font-size: clamp(1.25rem, 2vw, 1.85rem);
   font-weight: 400;
   color: var(--color-text);
   margin-bottom: var(--space-sm);
+  padding-right: clamp(3rem, 5vw, 5rem); /* espacio para el número */
+  line-height: 1.2;
 }
 
 .service-item__desc {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
-  line-height: 1.7;
-  max-width: 340px;
+  line-height: 1.78;
+  max-width: 380px;
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--color-line-light);
 }
 
 /* ─── 12. PROYECTOS ─────────────────────────────────────────── */
@@ -1382,16 +1393,7 @@ p { line-height: 1.75; }
 /* ─── 18. RESPONSIVE — TABLET (≤ 1100px) ───────────────────── */
 @media (max-width: 1100px) {
 
-  .services__grid { grid-template-columns: 1fr 1fr; }
-
-  .service-item,
-  .service-item:nth-child(3),
-  .service-item:nth-child(4),
-  .service-item:nth-child(5) {
-    grid-column: span 1;
-    border-right: 1px solid var(--color-line-light);
-  }
-  .service-item:nth-child(2n) { border-right: none; }
+  /* services grid ya es 2-col — sin cambios necesarios en tablet */
 
   .projects__grid { grid-template-columns: 1fr 1fr; }
   .project-card--wide,
@@ -1425,7 +1427,10 @@ p { line-height: 1.75; }
 
   .services__grid { grid-template-columns: 1fr; }
   .service-item,
-  .service-item:nth-child(n) { grid-column: span 1; border-right: none; }
+  .service-item:nth-child(n) {
+    grid-column: span 1;
+    border-right: none;
+  }
 
   .projects__grid { grid-template-columns: 1fr; }
   .project-card--wide,
