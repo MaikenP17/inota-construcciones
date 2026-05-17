@@ -34,10 +34,8 @@
           <ul class="nav__dropdown" role="menu" aria-label="Servicios">
             <li><a href="/servicios/construccion/" class="nav__dropdown-item nav__dropdown-item--highlight" role="menuitem">Construcción</a></li>
             <li><a href="/#servicios" class="nav__dropdown-item" role="menuitem">Remodelación</a></li>
-            <li><a href="/#servicios" class="nav__dropdown-item" role="menuitem">Diseño</a></li>
-            <li><a href="/#servicios" class="nav__dropdown-item" role="menuitem">Drywall y acabados</a></li>
-            <li><a href="/#servicios" class="nav__dropdown-item" role="menuitem">Proyectos comerciales</a></li>
-            <li><a href="/#servicios" class="nav__dropdown-item" role="menuitem">Vivienda familiar</a></li>
+            <li><a href="/#servicios" class="nav__dropdown-item" role="menuitem">Carpintería</a></li>
+            <li><a href="/#servicios" class="nav__dropdown-item" role="menuitem">Diseño interior</a></li>
           </ul>
         </li>
         <li><a href="/#proyectos">Proyectos</a></li>
@@ -60,14 +58,15 @@
       </button>
       <ul role="list">
         <li class="mobile-menu__group">
-          <span class="mobile-menu__group-label">Servicios</span>
-          <ul class="mobile-menu__sub">
+          <button class="mobile-menu__toggle" aria-expanded="false" aria-controls="mobile-servicios-sub">
+            Servicios
+            <svg class="mobile-menu__chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+          </button>
+          <ul class="mobile-menu__sub" id="mobile-servicios-sub" aria-hidden="true">
             <li><a href="/servicios/construccion/">Construcción</a></li>
             <li><a href="/#servicios">Remodelación</a></li>
-            <li><a href="/#servicios">Diseño</a></li>
-            <li><a href="/#servicios">Drywall y acabados</a></li>
-            <li><a href="/#servicios">Proyectos comerciales</a></li>
-            <li><a href="/#servicios">Vivienda familiar</a></li>
+            <li><a href="/#servicios">Carpintería</a></li>
+            <li><a href="/#servicios">Diseño interior</a></li>
           </ul>
         </li>
         <li><a href="/#proyectos">Proyectos</a></li>
@@ -91,7 +90,11 @@
     ============================================================ -->
     <section class="constr-hero" aria-label="Construcción — Inota">
 
-      <div class="constr-hero__bg" style="background-image: url('../../Recursos/construccion/imagen principal 1.jpeg');" aria-hidden="true"></div>
+      <div class="constr-hero__slider" aria-hidden="true">
+        <div class="constr-hero__slide is-active" style="background-image: url('../../Recursos/construccion/imagen principal 1.jpeg');"></div>
+        <div class="constr-hero__slide" style="background-image: url('../../Recursos/construccion/imagen principal2.jpeg');"></div>
+        <div class="constr-hero__slide" style="background-image: url('../../Recursos/construccion/imagen principal 3.jpeg');"></div>
+      </div>
       <div class="constr-hero__overlay" aria-hidden="true"></div>
 
       <div class="constr-hero__content">
@@ -315,5 +318,22 @@
   </footer>
 
   <script src="../../js/main.js"></script>
+  <script>
+    (function () {
+      var slides = document.querySelectorAll('.constr-hero__slide');
+      if (slides.length < 2) return;
+      var current = 0;
+      var INTERVAL = 5500; // ms por slide
+      var FADE = 1400;     // ms de crossfade (debe coincidir con CSS transition)
+
+      function nextSlide() {
+        slides[current].classList.remove('is-active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('is-active');
+      }
+
+      setInterval(nextSlide, INTERVAL);
+    })();
+  </script>
 </body>
 </html>
