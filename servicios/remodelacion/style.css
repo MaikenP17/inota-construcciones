@@ -1,0 +1,510 @@
+/* =============================================================
+   REMODELACIÓN — style.css
+   Identidad: interiorismo premium, lifestyle, warmth editorial
+============================================================= */
+
+/* ── VARIABLES LOCALES ───────────────────────────────────────── */
+:root {
+  --remod-dark:    #0e0b09;
+  --remod-dark2:   #13100d;
+  --remod-cream:   #f4f0e8;
+  --remod-accent:  #c49060;   /* cobre más cálido que construcción */
+  --remod-muted:   rgba(244, 240, 232, 0.72);
+  --remod-line:    rgba(244, 240, 232, 0.10);
+}
+
+.remod-page {
+  background: var(--remod-dark);
+  color: var(--remod-cream);
+}
+
+/* ── BACK LINK ───────────────────────────────────────────────── */
+.constr-back {
+  position: fixed;
+  top: calc(var(--header-h) + 1.4rem);
+  left: var(--container-pad);
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 232, 0.45);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  pointer-events: auto;
+}
+.constr-back:hover { color: rgba(244, 240, 232, 0.85); }
+.constr-back svg { width: 14px; height: 14px; transition: transform 0.2s ease; }
+.constr-back:hover svg { transform: translateX(-3px); }
+
+@media (max-width: 768px) { .constr-back { display: none; } }
+
+/* ── HERO ────────────────────────────────────────────────────── */
+.remod-hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.remod-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 55%;
+  animation: remodDrift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes remodDrift {
+  from { transform: scale(1.00) translate(0, 0); }
+  to   { transform: scale(1.06) translate(-1.2%, -0.6%); }
+}
+
+/* Overlay más cálido — vignette lateral izquierda pronunciada */
+.remod-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right,  rgba(14,11,9,0.82) 0%, rgba(14,11,9,0.30) 50%, rgba(14,11,9,0.10) 100%),
+    linear-gradient(to top,    rgba(14,11,9,0.90) 0%, rgba(14,11,9,0.15) 50%, transparent 100%),
+    linear-gradient(to bottom, rgba(14,11,9,0.55) 0%, transparent 30%);
+}
+
+.remod-hero__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--container-pad) clamp(3.5rem, 7vh, 6rem);
+  max-width: calc(var(--container-max) + var(--container-pad) * 2);
+}
+
+.remod-hero__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--remod-accent);
+  margin-bottom: 1.1rem;
+}
+
+.remod-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 9vw, 9.5rem);
+  font-weight: 300;
+  color: var(--remod-cream);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  hyphens: none;
+  white-space: nowrap;
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.remod-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.remod-hero__meta-item {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 232, 0.55);
+}
+
+.remod-hero__meta-sep {
+  width: 1px;
+  height: 10px;
+  background: rgba(244, 240, 232, 0.22);
+  flex-shrink: 0;
+}
+
+/* Scroll hint */
+.remod-hero__scroll {
+  position: absolute;
+  right: var(--container-pad);
+  bottom: clamp(2.5rem, 5vh, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.remod-hero__scroll span {
+  font-family: var(--font-body);
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 232, 0.38);
+  writing-mode: vertical-rl;
+}
+
+.remod-hero__scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(196,144,96,0.60), transparent);
+  animation: remodScrollPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes remodScrollPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1.0; }
+}
+
+/* ── INTRO EDITORIAL — dos columnas asimétricas ──────────────── */
+.remod-intro {
+  background: var(--remod-dark2);
+  padding: clamp(6rem, 12vw, 11rem) var(--container-pad);
+}
+
+.remod-intro__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
+}
+
+/* Columna izquierda: label + frase grande */
+.remod-intro__left {
+  border-left: 2px solid var(--remod-accent);
+  padding-left: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.remod-intro__label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--remod-accent);
+  margin-bottom: 1.6rem;
+}
+
+.remod-intro__lead {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--remod-cream);
+}
+
+.remod-intro__lead em {
+  font-style: italic;
+  color: var(--remod-accent);
+}
+
+/* Columna derecha: párrafos */
+.remod-intro__right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding-top: 0.5rem;
+}
+
+.remod-intro__text {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+  line-height: 1.80;
+  color: var(--remod-muted);
+}
+
+/* ── CARDS DE SERVICIOS ──────────────────────────────────────── */
+.remod-cards {
+  background: var(--remod-dark);
+  padding: clamp(4rem, 7vw, 6rem) var(--container-pad);
+}
+
+.remod-cards__grid {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.remod-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: clamp(520px, 68vh, 680px);
+  cursor: default;
+}
+
+.remod-card__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  filter: saturate(0.85);
+}
+.remod-card:hover .remod-card__bg {
+  transform: scale(1.055);
+  filter: saturate(1.0);
+}
+
+/* Overlay más cálido que construcción */
+.remod-card__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(10,7,5,0.96) 0%, rgba(10,7,5,0.50) 52%, rgba(10,7,5,0.12) 100%);
+  transition: background 0.5s ease;
+}
+.remod-card:hover .remod-card__overlay {
+  background:
+    linear-gradient(to top, rgba(10,7,5,0.98) 0%, rgba(10,7,5,0.62) 55%, rgba(10,7,5,0.20) 100%);
+}
+
+.remod-card__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.8rem, 2.8vw, 2.4rem);
+}
+
+.remod-card__label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(210, 175, 120, 0.95);
+  margin-bottom: 0.8rem;
+  padding: 0.25em 0.6em;
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 2px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.70), 0 0 20px rgba(0,0,0,0.40);
+}
+
+.remod-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2vw, 2rem);
+  font-weight: 300;
+  color: var(--remod-cream);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.1rem;
+}
+
+.remod-card__desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.82rem, 1vw, 0.90rem);
+  line-height: 1.72;
+  color: rgba(244, 240, 232, 0.62);
+  border-top: 1px solid rgba(244, 240, 232, 0.10);
+  padding-top: 1rem;
+  transition: color 0.4s ease;
+}
+.remod-card:hover .remod-card__desc {
+  color: rgba(244, 240, 232, 0.80);
+}
+
+/* ── CIERRE — Todo tu hogar (sección editorial oscura) ──────── */
+.remod-full {
+  position: relative;
+  background: var(--remod-dark2);
+  overflow: hidden;
+  padding: clamp(6rem, 12vw, 11rem) var(--container-pad);
+}
+
+/* Textura sutil de ruido — profundidad sin imagen */
+.remod-full::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 50%, rgba(196,144,96,0.06) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 80% at 85% 50%, rgba(196,144,96,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* Línea cobre horizontal decorativa en la parte superior */
+.remod-full::after {
+  content: '';
+  position: absolute;
+  top: 0; left: var(--container-pad); right: var(--container-pad);
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(196,144,96,0.40), transparent);
+}
+
+.remod-full__inner {
+  position: relative;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(4rem, 8vw, 9rem);
+  align-items: center;
+}
+
+.remod-full__label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--remod-accent);
+  margin-bottom: 1.8rem;
+}
+
+.remod-full__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 300;
+  line-height: 1.00;
+  letter-spacing: -0.03em;
+  color: var(--remod-cream);
+}
+
+.remod-full__title em {
+  font-style: italic;
+  color: var(--remod-accent);
+}
+
+.remod-full__right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  border-left: 1px solid var(--remod-line);
+  padding-left: clamp(2rem, 4vw, 4rem);
+}
+
+.remod-full__text {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  line-height: 1.82;
+  color: var(--remod-muted);
+}
+
+.remod-full__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.80rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--remod-accent);
+  text-decoration: none;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(196,144,96,0.35);
+  transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease;
+}
+.remod-full__cta:hover {
+  color: var(--remod-cream);
+  border-color: rgba(244,240,232,0.35);
+  gap: 0.8rem;
+}
+
+/* ── CTA FINAL ───────────────────────────────────────────────── */
+.constr-cta {
+  background: var(--remod-dark2);
+  padding: clamp(5rem, 10vw, 9rem) var(--container-pad);
+  text-align: center;
+  border-top: 1px solid rgba(244,240,232,0.06);
+}
+
+.constr-cta__inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.constr-cta__label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.60rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--remod-accent);
+  margin-bottom: 1.8rem;
+}
+
+.constr-cta__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.0;
+  color: var(--remod-cream);
+  letter-spacing: -0.02em;
+  margin-bottom: 2.4rem;
+}
+
+.constr-cta__title em {
+  font-style: italic;
+  color: rgba(244,240,232,0.48);
+}
+
+/* ── RESPONSIVE — TABLET ─────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .remod-cards__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .remod-card { min-height: 440px; }
+
+  .remod-full__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .remod-full__right {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--remod-line);
+    padding-top: 3rem;
+  }
+  .remod-full__title { font-size: clamp(2.8rem, 6vw, 4.5rem); }
+}
+
+/* ── RESPONSIVE — MOBILE ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .remod-hero__title {
+    font-size: clamp(2.8rem, 10vw, 4.5rem);
+    white-space: normal;
+    word-break: keep-all;
+    hyphens: none;
+  }
+
+  .remod-intro__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .remod-intro__left {
+    border-left: none;
+    padding-left: 0;
+    border-bottom: 1px solid var(--remod-line);
+    padding-bottom: 2.5rem;
+  }
+
+  .remod-cards__grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .remod-card { min-height: 440px; }
+
+  .remod-full__inner { gap: 2.5rem; }
+  .remod-full__title { font-size: clamp(2.4rem, 9vw, 4rem); }
+}

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Construcción residencial y comercial — Inota Construcciones. Más de 20 años edificando Norte de Santander con rigor, calidad y acabados premium.">
+  <meta name="description" content="Remodelación residencial y comercial — Inota Construcciones. Transformamos espacios en experiencias de alto nivel con más de 20 años de trayectoria.">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Construcción — Inota Construcciones">
-  <meta property="og:description" content="Detrás de cada proyecto hay un sueño — nosotros llevamos más de 20 años haciéndolos realidad.">
+  <meta property="og:title" content="Remodelación — Inota Construcciones">
+  <meta property="og:description" content="Transformamos espacios en experiencias. Cocinas, baños, pisos, acabados y proyectos integrales con estética, funcionalidad y exclusividad.">
   <meta property="og:type" content="website">
-  <title>Construcción — Inota Construcciones</title>
+  <title>Remodelación — Inota Construcciones</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0908'/><text x='50' y='78' text-anchor='middle' font-size='72' fill='%23b5834a' font-family='Georgia,serif' font-weight='400'>I</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,10 +16,10 @@
   <link rel="stylesheet" href="../../css/styles.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="constr-page">
+<body class="remod-page">
 
   <!-- ============================================================
-       HEADER / NAV (idéntico al principal — rutas absolutas)
+       HEADER / NAV
   ============================================================ -->
   <header id="site-header" role="banner">
     <nav class="nav" aria-label="Navegación principal">
@@ -32,8 +32,8 @@
             <svg class="nav__dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
           </a>
           <ul class="nav__dropdown" role="menu" aria-label="Servicios">
-            <li><a href="/servicios/construccion/" class="nav__dropdown-item nav__dropdown-item--highlight" role="menuitem">Construcción</a></li>
-            <li><a href="/servicios/remodelacion/" class="nav__dropdown-item" role="menuitem">Remodelación</a></li>
+            <li><a href="/servicios/construccion/" class="nav__dropdown-item" role="menuitem">Construcción</a></li>
+            <li><a href="/servicios/remodelacion/" class="nav__dropdown-item nav__dropdown-item--highlight" role="menuitem">Remodelación</a></li>
             <li><a href="/#servicios" class="nav__dropdown-item" role="menuitem">Carpintería</a></li>
             <li><a href="/#servicios" class="nav__dropdown-item" role="menuitem">Diseño interior</a></li>
           </ul>
@@ -45,13 +45,10 @@
       </ul>
 
       <button class="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </nav>
 
-    <!-- Mobile menu -->
     <div id="mobile-menu" class="mobile-menu" role="dialog" aria-label="Menú de navegación" aria-hidden="true">
       <button class="mobile-close" aria-label="Cerrar menú">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
@@ -77,7 +74,6 @@
     </div>
   </header>
 
-  <!-- Back link (visible en desktop sobre el hero) -->
   <a href="/" class="constr-back" aria-label="Volver al inicio">
     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg>
     Inota
@@ -86,114 +82,129 @@
   <main>
 
     <!-- ============================================================
-         HERO — Imagen principal + título
+         HERO — Portada antes/después con Ken Burns elegante
     ============================================================ -->
-    <section class="constr-hero" aria-label="Construcción — Inota">
+    <section class="remod-hero" aria-label="Remodelación — Inota">
+      <div class="remod-hero__bg" style="background-image: url('../../Recursos/remodelacion/Portada.png');" aria-hidden="true"></div>
+      <div class="remod-hero__overlay" aria-hidden="true"></div>
 
-      <div class="constr-hero__slider" aria-hidden="true">
-        <div class="constr-hero__slide is-active" style="background-image: url('../../Recursos/construccion/imagen principal 1.jpeg');"></div>
-        <div class="constr-hero__slide" style="background-image: url('../../Recursos/construccion/imagen principal2.jpeg');"></div>
-        <div class="constr-hero__slide" style="background-image: url('../../Recursos/construccion/imagen principal 3.jpeg');"></div>
-      </div>
-      <div class="constr-hero__overlay" aria-hidden="true"></div>
-
-      <div class="constr-hero__content">
-        <span class="constr-hero__eyebrow">Inota Construcciones · Servicio</span>
-        <h1 class="constr-hero__title">Construcción</h1>
-        <div class="constr-hero__meta">
-          <span class="constr-hero__meta-item">+20 años de experiencia</span>
-          <span class="constr-hero__meta-sep" aria-hidden="true"></span>
-          <span class="constr-hero__meta-item">Cúcuta · Norte de Santander</span>
-          <span class="constr-hero__meta-sep" aria-hidden="true"></span>
-          <span class="constr-hero__meta-item">Residencial &amp; Comercial</span>
+      <div class="remod-hero__content">
+        <span class="remod-hero__eyebrow">Inota Construcciones · Servicio</span>
+        <h1 class="remod-hero__title">Remodelación</h1>
+        <div class="remod-hero__meta">
+          <span class="remod-hero__meta-item">Interiorismo premium</span>
+          <span class="remod-hero__meta-sep" aria-hidden="true"></span>
+          <span class="remod-hero__meta-item">Cúcuta · Norte de Santander</span>
+          <span class="remod-hero__meta-sep" aria-hidden="true"></span>
+          <span class="remod-hero__meta-item">Residencial &amp; Comercial</span>
         </div>
       </div>
 
-      <div class="constr-hero__scroll" aria-hidden="true">
+      <div class="remod-hero__scroll" aria-hidden="true">
         <span>Explorar</span>
-        <div class="constr-hero__scroll-line"></div>
-      </div>
-
-    </section>
-
-    <!-- ============================================================
-         INTRO — Párrafo editorial
-    ============================================================ -->
-    <section class="constr-intro" aria-labelledby="constr-intro-heading">
-      <div class="constr-intro__inner reveal-fade">
-        <span class="constr-intro__label">Nuestra historia</span>
-        <p class="constr-intro__text" id="constr-intro-heading">
-          Detrás de cada proyecto hay un sueño —
-          nosotros llevamos más de 20 años <em>haciéndolos realidad.</em>
-          Cada persona que llega a nosotros trae consigo una visión: el hogar que siempre imaginó,
-          el negocio que quiere ver crecer, el espacio que transformará su vida.
-          Con más de dos décadas de experiencia y un equipo de profesionales apasionados,
-          convertimos cada idea en una obra que supera expectativas.
-        </p>
+        <div class="remod-hero__scroll-line"></div>
       </div>
     </section>
 
     <!-- ============================================================
-         CARDS — 3 servicios con imagen de fondo
+         INTRO — Editorial asimétrico
     ============================================================ -->
-    <section class="constr-cards" aria-label="Nuestros servicios de construcción">
-      <div class="constr-cards__grid">
+    <section class="remod-intro" aria-label="Introducción">
+      <div class="remod-intro__inner reveal-fade">
+        <div class="remod-intro__left">
+          <span class="remod-intro__label">Nuestra esencia</span>
+          <p class="remod-intro__lead">
+            Transformamos<br>espacios en<br><em>experiencias.</em>
+          </p>
+        </div>
+        <div class="remod-intro__right">
+          <p class="remod-intro__text">
+            Con más de 20 años diseñando y ejecutando proyectos de alto nivel, ofrecemos un servicio integral que va desde la primera idea hasta la entrega perfecta. Cada detalle importa, cada decisión refleja tu estilo.
+          </p>
+          <p class="remod-intro__text">
+            Nos especializamos en renovaciones que combinan estética, funcionalidad y exclusividad — adaptadas completamente a tu visión.
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <article class="constr-card reveal-up" aria-labelledby="svc-familiar-heading">
-          <div class="constr-card__bg" style="background-image: url('../../Recursos/construccion/familiar.jpg');"></div>
-          <div class="constr-card__overlay" aria-hidden="true"></div>
-          <div class="constr-card__content">
-            <span class="constr-card__label">Vivienda familiar</span>
-            <h2 class="constr-card__title" id="svc-familiar-heading">Cada familia tiene<br>una visión.</h2>
-            <p class="constr-card__desc">
-              Nosotros la hacemos realidad. Diseñamos y construimos viviendas con un enfoque que equilibra
-              calidad, funcionalidad y estética, llevando cada proyecto al máximo de su potencial.
-              Más que una casa, es el espacio donde tu familia vive, crece y crea sus mejores recuerdos.
+    <!-- ============================================================
+         CARDS — Cocinas / Baños / Pisos y Acabados
+    ============================================================ -->
+    <section class="remod-cards" aria-label="Servicios de remodelación">
+      <div class="remod-cards__grid">
+
+        <article class="remod-card reveal-up" aria-labelledby="svc-cocinas-heading">
+          <div class="remod-card__bg" style="background-image: url('../../Recursos/remodelacion/cocina.jpg');"></div>
+          <div class="remod-card__overlay" aria-hidden="true"></div>
+          <div class="remod-card__content">
+            <span class="remod-card__label">Cocinas</span>
+            <h2 class="remod-card__title" id="svc-cocinas-heading">El corazón<br>del hogar.</h2>
+            <p class="remod-card__desc">
+              La cocina no es solo un espacio funcional — es el corazón del hogar. Diseñamos y transformamos cocinas con materiales de primera calidad, soluciones de almacenamiento inteligentes y acabados impecables que combinan elegancia y durabilidad. Cada proyecto es único: creamos cocinas modernas, sofisticadas y completamente adaptadas a tu estilo de vida.
             </p>
           </div>
         </article>
 
-        <article class="constr-card reveal-up" style="--reveal-delay: 100ms" aria-labelledby="svc-comercial-heading">
-          <div class="constr-card__bg" style="background-image: url('../../Recursos/construccion/comercial.jpeg');"></div>
-          <div class="constr-card__overlay" aria-hidden="true"></div>
-          <div class="constr-card__content">
-            <span class="constr-card__label">Proyectos comerciales</span>
-            <h2 class="constr-card__title" id="svc-comercial-heading">Cada negocio tiene<br>una historia.</h2>
-            <p class="constr-card__desc">
-              Nosotros le damos el espacio para contarla. Intervenimos y construimos espacios comerciales
-              con un enfoque que equilibra diseño, funcionalidad y estrategia, transformando cada metro
-              cuadrado en una oportunidad para destacar. Más que una construcción, es la base física
-              de tu éxito empresarial.
+        <article class="remod-card reveal-up" style="--reveal-delay: 110ms" aria-labelledby="svc-banos-heading">
+          <div class="remod-card__bg" style="background-image: url('../../Recursos/remodelacion/baño.jpeg');"></div>
+          <div class="remod-card__overlay" aria-hidden="true"></div>
+          <div class="remod-card__content">
+            <span class="remod-card__label">Baños</span>
+            <h2 class="remod-card__title" id="svc-banos-heading">Un refugio<br>personal.</h2>
+            <p class="remod-card__desc">
+              Un baño de lujo va más allá de lo estético — es un refugio personal. Diseñamos y ejecutamos cada detalle con precisión: cerámicas exclusivas, grifería de alta gama, iluminación ambiental y mobiliario a medida que transforman cualquier baño en un espacio sofisticado y envolvente. El resultado: ambientes que combinan confort, elegancia y materiales de larga duración.
             </p>
           </div>
         </article>
 
-        <article class="constr-card reveal-up" style="--reveal-delay: 200ms" aria-labelledby="svc-drywall-heading">
-          <div class="constr-card__bg" style="background-image: url('../../Recursos/construccion/drywall.jpg');"></div>
-          <div class="constr-card__overlay" aria-hidden="true"></div>
-          <div class="constr-card__content">
-            <span class="constr-card__label">Drywall y acabados</span>
-            <h2 class="constr-card__title" id="svc-drywall-heading">Rapidez y calidad<br>no son opuestos.</h2>
-            <p class="constr-card__desc">
-              Con drywall son la misma cosa. Intervenimos espacios residenciales y comerciales con
-              sistemas constructivos en seco que combinan velocidad de ejecución, versatilidad de
-              diseño y durabilidad real. Más que un acabado, es una solución inteligente: menos polvo,
-              menos tiempo, más resultado.
+        <article class="remod-card reveal-up" style="--reveal-delay: 220ms" aria-labelledby="svc-pisos-heading">
+          <div class="remod-card__bg" style="background-image: url('../../Recursos/remodelacion/pisos y acabdos.jpg');"></div>
+          <div class="remod-card__overlay" aria-hidden="true"></div>
+          <div class="remod-card__content">
+            <span class="remod-card__label">Pisos y acabados</span>
+            <h2 class="remod-card__title" id="svc-pisos-heading">La firma de<br>un espacio.</h2>
+            <p class="remod-card__desc">
+              Los acabados son la firma de un espacio bien ejecutado. Trabajamos con materiales seleccionados — porcelanato, madera, microcemento y piedra natural — instalados con precisión milimétrica para garantizar resultados impecables y duraderos. Cada superficie cuenta una historia: elegimos texturas, tonos y materiales que elevan la estética de cada ambiente.
             </p>
           </div>
         </article>
 
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CIERRE — Todo tu hogar o negocio (editorial oscuro)
+    ============================================================ -->
+    <section class="remod-full reveal-fade" aria-labelledby="remod-full-heading">
+      <div class="remod-full__bg" aria-hidden="true"></div>
+      <div class="remod-full__inner">
+        <div class="remod-full__left">
+          <span class="remod-full__label">Para cada espacio</span>
+          <h2 class="remod-full__title" id="remod-full-heading">
+            Todo tu hogar<br>o <em>negocio.</em>
+          </h2>
+        </div>
+        <div class="remod-full__right">
+          <p class="remod-full__text">
+            Cada espacio tiene potencial — nosotros lo llevamos al máximo. Intervenimos casas, apartamentos y negocios comerciales con un enfoque que equilibra diseño, funcionalidad y exclusividad, redefiniendo cada ambiente desde su estructura hasta su último detalle.
+          </p>
+          <p class="remod-full__text">
+            Más que una reforma, es una inversión: espacios que aumentan su valor, proyectan una imagen impecable y elevan la calidad de vida de quienes los habitan.
+          </p>
+          <a href="/#contacto" class="remod-full__cta">Iniciar conversación →</a>
+        </div>
       </div>
     </section>
 
     <!-- ============================================================
          CTA FINAL
     ============================================================ -->
-    <section class="constr-cta" aria-labelledby="constr-cta-heading">
+    <section class="constr-cta" aria-labelledby="remod-cta-heading">
       <div class="constr-cta__inner reveal-fade">
         <span class="constr-cta__label">Hablemos</span>
-        <h2 class="constr-cta__title" id="constr-cta-heading">
-          Tu proyecto merece<br>a los <em>mejores.</em>
+        <h2 class="constr-cta__title" id="remod-cta-heading">
+          Tu espacio merece<br>lo <em>mejor.</em>
         </h2>
         <a href="/#contacto" class="btn btn--outline">Iniciar conversación</a>
       </div>
@@ -217,10 +228,9 @@
             <span class="footer__nav-heading">Servicios</span>
             <ul>
               <li><a href="/servicios/construccion/">Construcción</a></li>
-              <li><a href="/#servicios">Remodelación</a></li>
-              <li><a href="/#servicios">Diseño Arquitectónico</a></li>
-              <li><a href="/#servicios">Dirección de Obra</a></li>
-              <li><a href="/#servicios">Acabados Premium</a></li>
+              <li><a href="/servicios/remodelacion/">Remodelación</a></li>
+              <li><a href="/#servicios">Carpintería</a></li>
+              <li><a href="/#servicios">Diseño interior</a></li>
             </ul>
           </div>
           <div class="footer__nav-col">
@@ -244,13 +254,10 @@
       </div>
 
       <div class="footer__bottom">
-        <p class="footer__copy">&copy; 2024 Inota Construcciones. Todos los derechos reservados.</p>
-        <div class="footer__social" aria-label="Redes sociales">
+        <p class="footer__copy">© 2025 Inota Construcciones. Todos los derechos reservados.</p>
+        <div class="footer__social">
           <a href="#" aria-label="Instagram de Inota Construcciones">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="#" aria-label="Facebook de Inota Construcciones">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
           <a href="#" aria-label="WhatsApp de Inota Construcciones">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
@@ -261,22 +268,5 @@
   </footer>
 
   <script src="../../js/main.js"></script>
-  <script>
-    (function () {
-      var slides = document.querySelectorAll('.constr-hero__slide');
-      if (slides.length < 2) return;
-      var current = 0;
-      var INTERVAL = 5500; // ms por slide
-      var FADE = 1400;     // ms de crossfade (debe coincidir con CSS transition)
-
-      function nextSlide() {
-        slides[current].classList.remove('is-active');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('is-active');
-      }
-
-      setInterval(nextSlide, INTERVAL);
-    })();
-  </script>
 </body>
 </html>
